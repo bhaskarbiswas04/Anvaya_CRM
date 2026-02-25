@@ -6,7 +6,7 @@ export default function Sidebar() {
       className="sidebar bg-dark text-white p-3 d-none d-md-block"
       style={{ width: "220px" }}
     >
-      <h4>CRM</h4>
+      <h4>Anvaya</h4>
 
       <ul className="nav flex-column mt-3">
         <li className="nav-item">

@@ -1,40 +1,10 @@
 import { createContext, useContext, useState } from "react";
+import leads_data from "../dummy_datas/leads_data"
 
 const LeadContext = createContext();
 
 export function LeadProvider({ children }) {
-  const [leads, setLeads] = useState([
-    {
-      id: 1,
-      name: "Rahul",
-      status: "new",
-      agent: "John",
-      source: "Referral",
-      priority: "high",
-      timeToClose: 30,
-      comments: [],
-    },
-    {
-      id: 2,
-      name: "Priya",
-      status: "contacted",
-      agent: "Sarah",
-      source: "Website",
-      priority: "medium",
-      timeToClose: 20,
-      comments: [],
-    },
-    {
-      id: 3,
-      name: "Amit",
-      status: "qualified",
-      agent: "Mike",
-      source: "Cold Call",
-      priority: "low",
-      timeToClose: 15,
-      comments: [],
-    },
-  ]);
+  const [leads, setLeads] = useState(leads_data);
 
   // ✅ addComment function (MISSING BEFORE)
   const addComment = (leadId, text) => {

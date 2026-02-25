@@ -6,7 +6,7 @@ export default function LeadPreview({ leads }) {
   return (
     <div className="row mb-4">
       {leads.map((lead) => (
-        <div key={lead.id} className="col-12 col-md-4">
+        <div key={lead.id} className="col-12 col-md-3 mt-2">
           <div
             className="card shadow-sm border-0 p-3 cursor-pointer"
             style={{ cursor: "pointer" }}
