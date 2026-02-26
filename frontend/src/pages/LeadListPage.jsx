@@ -1,7 +1,9 @@
-import { useLeads } from "../context/LeadContext";
-import Sidebar from "../layouts/Sidebar";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useLeads } from "../context/LeadContext";
+
+import Sidebar from "../layouts/Sidebar";
+import AddLeadButton from "../components/dashboard-screen/AddLeadButton";
 
 export default function LeadList() {
   const { leads } = useLeads();
@@ -100,12 +102,7 @@ export default function LeadList() {
           </div>
 
           <div className="col-12 col-md-auto d-flex align-items-end">
-            <button
-              className="btn btn-primary w-100"
-              onClick={() => navigate("/")}
-            >
-              Add New Lead
-            </button>
+            <AddLeadButton className="w-100" />
           </div>
         </div>
 

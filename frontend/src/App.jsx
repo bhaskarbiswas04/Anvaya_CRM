@@ -8,6 +8,7 @@ import DashboardPage from "./pages/DashboardPage"
 
 import LeadDetails from "./pages/LeadDetails";
 import LeadListPage from "./pages/LeadListPage";
+import AddLeadsPage from "./pages/AddLeadsPage";
 
 
 
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/" element={<DashboardPage />} />
       <Route path="/lead/:id" element={<LeadDetails />} />
       <Route path="/leads" element={<LeadListPage />} />
+      <Route path="/add-lead" element={<AddLeadsPage />} />
       {/* <Route path="/leads" element={<Leads />} />
       <Route path="/sales" element={<Sales />} />
       <Route path="/agents" element={<Agents />} />

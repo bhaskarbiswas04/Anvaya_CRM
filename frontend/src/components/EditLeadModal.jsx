@@ -41,12 +41,16 @@ export default function EditLeadModal({ lead, updateLead, close }) {
           {/* Source */}
           <div className="mb-3">
             <label className="form-label fw-semibold">Lead Source</label>
-            <input
-              className="form-control"
+            <select
+              className="form-select"
               name="source"
-              value={form.source || ""}
+              value={form.source}
               onChange={handleChange}
-            />
+            >
+              <option value="Website">Website</option>
+              <option value="Referral">Referral</option>
+              <option value="Cold Call">Cold Call</option>
+            </select>
           </div>
 
           {/* Status */}

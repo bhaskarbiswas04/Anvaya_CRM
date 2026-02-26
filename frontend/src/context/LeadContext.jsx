@@ -7,32 +7,43 @@ export function LeadProvider({ children }) {
   const [leads, setLeads] = useState(leads_data);
 
   // ✅ addComment function (MISSING BEFORE)
-  const addComment = (leadId, text) => {
-    const comment = {
-      id: Date.now(),
-      author: "Admin",
-      text,
-      timestamp: new Date().toLocaleString(),
-    };
-
+  const addComment = (leadId, commentObj) => {
     setLeads((prev) =>
-      prev.map((lead) =>
-        lead.id === leadId
-          ? { ...lead, comments: [...lead.comments, comment] }
-          : lead,
+      prev.map((l) =>
+        l.id === leadId
+          ? {
+              ...l,
+              comments: [
+                ...(l.comments || []),
+                { id: Date.now(), ...commentObj }, // ⭐ spread object
+              ],
+            }
+          : l,
       ),
     );
   };
 
-  // ✅ updateLead function
+  // updateLead function
   const updateLead = (updatedLead) => {
     setLeads((prev) =>
       prev.map((lead) => (lead.id === updatedLead.id ? updatedLead : lead)),
     );
   };
 
+  // Add Lead function
+  const addLead = (lead) => {
+    setLeads((prev) => [
+      ...prev,
+      {
+        ...lead,
+        id: Date.now(),
+        comments: [],
+      },
+    ]);
+  };
+
   return (
-    <LeadContext.Provider value={{ leads, addComment, updateLead }}>
+    <LeadContext.Provider value={{ leads, addComment, updateLead, addLead }}>
       {children}
     </LeadContext.Provider>
   );

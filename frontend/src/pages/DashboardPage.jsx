@@ -22,7 +22,7 @@ export default function DashboardPage() {
       <Sidebar />
 
       <main className="flex-grow-1 p-4 bg-light">
-        <h2 className="text-center">CRM Dashboard</h2>
+        <h2 className="text-center my-3">CRM Dashboard</h2>
 
         <LeadPreview leads={filteredLeads} />
         <LeadStats leads={leads} />

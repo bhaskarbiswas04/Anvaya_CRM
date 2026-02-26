@@ -11,8 +11,10 @@ export default function LeadDetails() {
 
   const [open, setOpen] = useState(false);
   const [comment, setComment] = useState("");
+  const [author, setAuthor] = useState("");
 
   const lead = leads?.find((lead) => lead.id === parseInt(id));
+  const agents = [...new Set(leads.map((l) => l.agent))];
 
   if (!lead) {
     return (
@@ -23,9 +25,16 @@ export default function LeadDetails() {
   }
 
   const submit = () => {
-    if (!comment.trim()) return;
-    addComment(lead.id, comment);
+    if (!comment.trim() || !author) return;
+
+    addComment(lead.id, {
+      text: comment,
+      author,
+      timestamp: new Date().toLocaleString(),
+    });
+
     setComment("");
+    setAuthor("");
   };
 
   return (
@@ -55,21 +64,32 @@ export default function LeadDetails() {
 
         {/* Lead details card */}
         <div className="card p-4 shadow-sm mb-4">
-          <p>
-            <b>Sales Agent:</b> {lead.agent}
-          </p>
-          <p>
-            <b>Lead Source:</b> {lead.source}
-          </p>
-          <p>
-            <b>Status:</b> {lead.status}
-          </p>
-          <p>
-            <b>Priority:</b> {lead.priority}
-          </p>
-          <p>
-            <b>Time to Close:</b> {lead.timeToClose} days
-          </p>
+          <div className="row g-3">
+            <div className="col-md-6">
+              <span className="text-muted small">Sales Agent</span>
+              <div className="fw-semibold text-capitalize">{lead.agent}</div>
+            </div>
+
+            <div className="col-md-6">
+              <span className="text-muted small">Lead Source</span>
+              <div className="fw-semibold">{lead.source}</div>
+            </div>
+
+            <div className="col-md-6">
+              <span className="text-muted small">Status</span>
+              <div className="fw-semibold text-capitalize">{lead.status}</div>
+            </div>
+
+            <div className="col-md-6">
+              <span className="text-muted small">Priority</span>
+              <div className="fw-semibold text-capitalize">{lead.priority}</div>
+            </div>
+
+            <div className="col-md-6">
+              <span className="text-muted small">Time to Close</span>
+              <div className="fw-semibold">{lead.timeToClose} days</div>
+            </div>
+          </div>
         </div>
 
         {/* Comments section */}
@@ -89,16 +109,34 @@ export default function LeadDetails() {
           ))}
 
           {/* Add comment */}
-          <div className="d-flex gap-2 mt-3">
-            <input
-              className="form-control"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="Add comment..."
-            />
-            <button className="btn btn-primary" onClick={submit}>
-              Submit
-            </button>
+          <div className="row g-2 mt-3">
+            <div className="col-md-3">
+              <select
+                className="form-select"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+              >
+                <option value="">Select Agent</option>
+                {agents.map((a) => (
+                  <option key={a}>{a}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="col-md-7">
+              <input
+                className="form-control"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Add comment..."
+              />
+            </div>
+
+            <div className="col-md-2">
+              <button className="btn btn-primary w-100" onClick={submit}>
+                Submit
+              </button>
+            </div>
           </div>
         </div>
 
