@@ -41,7 +41,10 @@ export default function LeadForm() {
 
   return (
     <div className="container py-4">
-      <div className="card shadow-sm p-4 mx-auto" style={{ maxWidth: "700px" }}>
+      <div
+        className="card shadow-sm p-4 mx-auto w-100"
+        style={{ maxWidth: "1200px" }}
+      >
         <h4 className="mb-3 text-center">Add New Lead</h4>
 
         <form onSubmit={submit} className="row g-3">

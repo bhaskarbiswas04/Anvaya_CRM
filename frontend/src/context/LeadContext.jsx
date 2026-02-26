@@ -6,7 +6,7 @@ const LeadContext = createContext();
 export function LeadProvider({ children }) {
   const [leads, setLeads] = useState(leads_data);
 
-  // ✅ addComment function (MISSING BEFORE)
+  // addComment function
   const addComment = (leadId, commentObj) => {
     setLeads((prev) =>
       prev.map((l) =>
@@ -15,7 +15,7 @@ export function LeadProvider({ children }) {
               ...l,
               comments: [
                 ...(l.comments || []),
-                { id: Date.now(), ...commentObj }, // ⭐ spread object
+                { id: Date.now(), ...commentObj }, // spread object
               ],
             }
           : l,
