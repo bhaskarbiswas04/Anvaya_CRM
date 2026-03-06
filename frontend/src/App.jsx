@@ -11,6 +11,7 @@ import LeadListPage from "./pages/LeadListPage";
 import AddLeadsPage from "./pages/AddLeadsPage";
 import SalesAgentsPage from "./pages/SalesAgentsPage";
 import AddAgentPage from "./pages/AddAgentPage";
+import SalesPage from "./pages/SalesPage";
 
 
 
@@ -21,7 +22,10 @@ export default function App() {
       <Route path="/lead/:id" element={<LeadDetails />} />
       <Route path="/leads" element={<LeadListPage />} />
       <Route path="/add-lead" element={<AddLeadsPage />} />
-      <Route path="/sales" element={<SalesAgentsPage />} />
+
+      <Route path="/sales" element={<SalesPage />} />
+
+      <Route path="/agents" element={<SalesAgentsPage />} />
       <Route path="/add-agent" element={<AddAgentPage />} />
 
       {/* <Route path="/leads" element={<Leads />} />
