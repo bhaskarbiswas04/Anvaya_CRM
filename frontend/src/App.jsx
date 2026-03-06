@@ -12,6 +12,7 @@ import AddLeadsPage from "./pages/AddLeadsPage";
 import SalesAgentsPage from "./pages/SalesAgentsPage";
 import AddAgentPage from "./pages/AddAgentPage";
 import SalesPage from "./pages/SalesPage";
+import ReportsPage from "./pages/ReportsPage";
 
 
 
@@ -27,6 +28,8 @@ export default function App() {
 
       <Route path="/agents" element={<SalesAgentsPage />} />
       <Route path="/add-agent" element={<AddAgentPage />} />
+
+      <Route path="/reports" element={<ReportsPage />} />
 
       {/* <Route path="/leads" element={<Leads />} />
       <Route path="/sales" element={<Sales />} />
