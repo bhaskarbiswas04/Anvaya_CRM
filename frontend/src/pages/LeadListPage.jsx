@@ -122,6 +122,7 @@ export default function LeadList() {
             <tbody>
               {filtered.map((lead) => (
                 <tr
+                  className="my-2"
                   key={lead.id}
                   style={{ cursor: "pointer" }}
                   onClick={() => navigate(`/lead/${lead.id}`)}
